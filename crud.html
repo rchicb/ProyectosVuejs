@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Crud</title>
+</head>
+<body>
+
+    <div class="container mt-5" id="crud">
+        <H4>{{titulo}}</H4>
+
+        <div class="header">
+            <input type="text" v-model="tareaNombre" @keyup.enter="crearTarea" >
+            <button @click="crearTarea" class="btn btn-primary">Crear</button>
+        </div>
+        <div class="content" v-for="(item,index) of listaTareas">
+        <div class="d-flex justify-content-between mt-2 align-items-center p-2" :class="item.estado === false? 'bg-info':'bg-success'">
+            <div>
+                {{item.nombre}} - {{item.estado}}
+            </div>
+            <div>
+                <button class="btn btn-success" @click="editarEstado(index)">Editar</button>
+                <button class="btn btn-danger" @click="eliminarTarea(index)">Eliminar</button>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="/scripts/scriptCrud.js"></script>
+</body>
+</html>
